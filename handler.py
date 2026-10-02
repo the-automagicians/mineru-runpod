@@ -492,9 +492,6 @@ if __name__ == "__main__":
     # rp_local. Warmup doesn't apply in local mode (no real worker
     # lifecycle), and rp_local has its own asyncio.run().
     if os.environ.get("RUNPOD_WEBHOOK_GET_JOB") is None:
-        runpod.serverless.start({
-            "handler": handler,
-            "concurrency_modifier": _concurrency_modifier,
-        })
+        runpod.serverless.start({"handler": handler, "concurrency_modifier": _concurrency_modifier})
     else:
         _bootstrap_main()
